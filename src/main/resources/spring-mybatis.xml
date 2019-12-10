@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd    
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+                        http://www.springframework.org/schema/tx 
+            			http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">  
+    <!-- 自动扫描 -->  
+    <context:component-scan base-package="com.mininglamp" />  
+    <!-- 引入配置文件 -->  
+    <bean id="propertyConfigurer"  
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="location" value="classpath:jdbc.properties" />  
+    </bean> 
+     
+   <!-- 业务源 -->  
+    <bean id="dataSource" class="com.mininglamp.util.FixedBasicDataSource" destroy-method="close">  
+        <property name="driverClassName" value="${jdbc.driver}" />  
+        <property name="url" value="${jdbc.url}" />  
+        <property name="username" value="${jdbc.username}" />  
+        <property name="password" value="${jdbc.password}" />  
+        <property name="initialSize" value="${initialSize}" />
+        <property name="maxActive" value="${maxActive}" />
+        <property name="maxIdle" value="${maxIdle}" />
+        <property name="minIdle" value="${minIdle}" />
+        <property name="maxWait" value="${maxWait}" />
+        <property name="removeAbandoned" value="${removeAbandoned}" />
+        <property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}" />
+        <property name="logAbandoned" value="${logAbandoned}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>  
+        <property name="numTestsPerEvictionRun" value="${numTestsPerEvictionRun}"/>  
+        <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/> 
+        <property name="validationQuery"><value>select 1</value></property>
+        <property name="testOnBorrow"><value>true</value></property>
+    </bean> 
+     
+     <!-- 配置源 --> 
+    <bean id="dataSource2" class="com.mininglamp.util.FixedBasicDataSource" destroy-method="close">  
+        <property name="driverClassName" value="${jdbc.driver2}" />  
+        <property name="url" value="${jdbc.url2}" />  
+        <property name="username" value="${jdbc.username2}" />  
+        <property name="password" value="${jdbc.password2}" />  
+        <property name="initialSize" value="${initialSize}" />
+        <property name="maxActive" value="${maxActive}" />
+        <property name="maxIdle" value="${maxIdle}" />
+        <property name="minIdle" value="${minIdle}" />
+        <property name="maxWait" value="${maxWait}" />
+        <property name="removeAbandoned" value="${removeAbandoned}" />
+        <property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}" />
+        <property name="logAbandoned" value="${logAbandoned}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>  
+        <property name="numTestsPerEvictionRun" value="${numTestsPerEvictionRun}"/>  
+        <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/> 
+        <property name="validationQuery"><value>select 1</value></property>
+        <property name="testOnBorrow"><value>true</value></property>
+    </bean>  
+  
+    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->  
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource" />  
+        <!-- 自动扫描mapping.xml文件 -->  
+        <property name="mapperLocations" value="classpath:com/mininglamp/mapping/*.xml"></property>  
+    </bean> 
+    
+    <!-- 扫描配置源-->  
+    <bean id="pzsqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource2" />  
+        <!-- 自动扫描mapping.xml文件 --> 
+        <property name="mapperLocations" value="classpath:com/mininglamp/Loginmappin‬g/*.xml"></property>  
+    </bean> 
+  
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        <property name="basePackage" value="com.mininglamp.dao" />  
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+    </bean>
+    
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+        <property name="basePackage" value="com.mininglamp.Logindao" />  
+        <property name="sqlSessionFactoryBeanName" value="pzsqlSessionFactory"></property>  
+    </bean>  
+   	<tx:annotation-driven transaction-manager="transactionManager"/>
+    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->  
+    <bean id="transactionManager"  
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+        <property name="dataSource" ref="dataSource" />  
+    </bean>
+    <!-- 定时任务的factorybean,配置其他config -->
+	<bean id="jobFactory" class="com.mininglamp.job.JobFactory"></bean>
+<!-- 	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobFactory" ref="jobFactory"></property>
+	</bean> -->
+    
+    <!-- 声明工厂 -->  
+    <bean id="schedulerFactoryBean" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">  
+        <property name="dataSource" ref="dataSource" />  
+        <property name="configLocation" value="classpath:quartz.properties" />  
+        <!--applicationContextSchedulerContextKey： 是org.springframework.scheduling.quartz.SchedulerFactoryBean这个类中     
+        	把spring上下 文以key/value的方式存放在了quartz的上下文中了，  
+        	可以用applicationContextSchedulerContextKey所定义的key得到对应的spring上下文-->    
+        <property name="applicationContextSchedulerContextKey" value="applicationContextKey"/>
+        <property name="jobFactory" ref="jobFactory"></property>       
+    </bean> 
+     
+</beans>  

@@ -1,0 +1,33 @@
+
+i,
+em,
+cite {
+    font-style: normal
+}
+
+body {
+    background: #fff;
+    line-height: 1.2
+}
+
+a,
+a:link {
+    text-decoration: none
+}
+
+a:active,
+a:hover {
+    text-decoration: none
+}
+
+a:focus {
+    outline: none
+}
+
+.fixed:after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden
+}

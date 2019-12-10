@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gbk">
+<title>layer-更懂你的web弹窗解决方案</title>
+<script src="../js/jquery-1.12.2.min.js"></script>
+<script src="layer/layer.js"></script>
+
+<style>
+	body .demo-class .layui-layer-title{background:#c00; color:#fff; border: none;}
+	body .demo-class .layui-layer-btn{border-top:1px solid #E9E7E7}
+	body .demo-class .layui-layer-btn a{background:#333;}
+	body .demo-class .layui-layer-btn .layui-layer-btn1{background:#999;}
+</style>
+</head>
+<body>
+ <a href="javascript:;" id="about">关于</a>
+ <a href="javascript:;" id="id">变颜色</a>
+
+<script>
+function ff (){
+	alert('6523');
+}
+;!function(){
+
+
+
+//关于
+$('#about').on('click', function(){
+	var index = layer.open({type:1,
+  area: ['700px', '530px'],  
+  title:'=====',
+  skin: 'demo-class',
+  fix: true,  
+   maxmin: false,//窗口最大最小
+   closeBtn:1, //0:不显示关闭按钮，1：显示关闭按钮，2：关闭按钮在右正上方
+   content: 'test/iframe',
+   btn: ['保持', '关闭', '取消'],
+   yes: function(index, layero){    //按钮【按钮一】的回调18.  
+   	alert('按钮一');
+	layer.close(index);  //手动关闭窗口
+   },
+   btn2: function(index, layero){
+     //按钮【按钮二】的回调20.
+	 alert('按钮二'); 
+   },
+   btn3: function(index, layero){
+      //按钮【按钮三】的回调22. 
+	  alert('按钮三');
+	  return false;  //设置为不可关闭窗口
+   },
+   cancel: function(){ ff();  }});
+   
+
+
+   
+  // layer.style(index, { width: '1000px', top: '10px',backgroundColor:'red'});
+	//layer.title("-000--", index)
+});
+
+$('#id').on('click', function(){
+    layer.tips('比如实现用户小名片什么的呀', this, {
+        style: ['background-color:#0FA6D8; color:#fff', '#0FA6D8'],
+        maxWidth:150
+    });
+});
+
+
+
+}();
+</script>
+</body>
+</html>

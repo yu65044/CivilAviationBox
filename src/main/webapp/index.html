@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>民航盒子</title>
+
+  <link rel="stylesheet" href="css/demo-styles.css" />
+  <link href="static/fullcalendar/css/fullcalendar.css" rel="stylesheet">
+  <link href="static/fullcalendar/css/fullcalendar.print.css" rel="stylesheet">
+  <link rel="stylesheet" href="src/images-grid.css">
+</head>
+<style type="text/css">
+body{
+	background-image:url(photo/bg.jpg);
+	background-size:100%;
+	-webkit-background-size:100%;
+	backgroung-repeat:no-repeat;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+</style>
+<body>
+ <div style="text-align:center;width:100%;height:100%;" data-page="random-page" id="menuView">
+<!-- <div id="wrapper" style="position:absolute;width:100%;height:100%;"><img alt="" src="photo/bg.jpg"></div> -->
+<div class="background" style="position:absolute;top:17%;left:13%;"><img alt="民航盒子" src="photo/logo.png"></div>
+<div style="display:inline;position:absolute;top:21%;left:11%;text-align:center;width:1903px;height:622px;" class="dashboard clearfix">
+     
+      <div class="col2 clearfix" style="display:inline;position:relative">
+        <div style="display:inline;position:relative;"><a href="http://10.204.114.133:8083/cyryManageWeb/cyryController/cyryMain.do?userId=0&sysMenuId=9"><img alt="从业人员背景审查" src="photo/icon_cy.png"></a><div style="position:absolute;top:-8px;right:20px;"><font color="white">从业人员背景审查</font></div></div>
+				<div style="display:inline;position:relative;"><a href="http://10.204.114.133:8083/flightRiskWeb/indexController/filghtRiskPage.do?userId=0&sysMenuId=0"><img alt="航班风险等级评估" src="photo/icon_fx.png"></a><div style="position:absolute;top:-8px;right:20px;"><font color="white">航班风险等级评估</font></div></div>
+				<div style="display:inline;position:relative;"><a href="#"><img alt="情报派单" src="photo/icon_qb.png"></a><div style="position:absolute;top:-8px;right:20px;"><font color="white">情报派单</font></div></div>
+				<div style="display:inline;position:relative;"><a href="#"><img alt="重点人员" src="photo/icon_zd1.png"></a><div style="position:absolute;top:-8px;right:20px;"><font color="white">重点人员</font></div></div>
+				<div style="display:inline;position:relative;"><a href="#"><img alt="航延预警" src="photo/icon_hy.png"></a><div style="position:absolute;top:-8px;right:20px;"><font color="white">航延预警</font></div></div>
+				<div style="display:inline;position:relative;"><a href="#"><img alt="机上盗窃" src="photo/icon_js.png"></a><div style="position:absolute;top:-8px;right:20px;"><font color="white">机上盗窃</font></div></div>
+				<div style="display:inline;position:relative;"><a href="#"><img alt="人体藏毒" src="photo/icon_rt.png"></a><div style="position:absolute;top:-8px;right:20px;"><font color="white">人体藏毒</font></div></div>
+				<div style="display:inline;position:relative;"><a href="#"><img alt="" src="photo/more.png"></a></div>
+      </div>
+      <div class="col3 clearfix" style="width: 506.19px;height:558px;">
+        <div id="calendar" style="position:absolute;top:5%;right:25%;width:26.6%;height:40%;"></div>
+      </div>
+  </div>
+</div>
+<!--====================================end demo wrapper================================================-->
+  <script src="js/jquery-1.8.2.min.js"></script>
+  <script src="js/modernizr-1.5.min.js"></script>
+  <script src="js/prefixfree.min.js"></script>
+  
+<!-- å¨å±js -->
+<script src="static/fullcalendar/js/jquery.min.js?v=2.1.4"></script>
+<!-- Full Calendar -->
+<script src="static/fullcalendar/js/fullcalendar.min.js"></script>
+<!-- images-grid -->
+<script src="src/images-grid.js"></script>
+<script type="text/javascript">
+   
+$(function($){
+    /* initialize the calendar
+    -----------------------------------------------------------------*/
+   var date = new Date();
+   var d = date.getDate();
+   var m = date.getMonth();
+   var y = date.getFullYear();
+
+   $('#calendar').fullCalendar({
+       header: {
+           left: 'prev',
+           center: 'title',
+           right: 'next'
+       },
+       editable: true,
+       droppable: true,
+       drop: function (date, allDay) { 
+           var originalEventObject = $(this).data('eventObject');
+           var copiedEventObject = $.extend({}, originalEventObject);
+
+           copiedEventObject.start = date;
+           copiedEventObject.allDay = allDay;
+
+           $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+           if ($('#drop-remove').is(':checked')) {
+               $(this).remove();
+           }
+
+       },
+   });
+});
+
+
+  
+  </script>
+  
+</body>
+</html>

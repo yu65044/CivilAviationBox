@@ -1,0 +1,59 @@
+.total-div{
+		 border:1px solid #CCCCCC;
+		 height:35px;
+		 background:#fff;
+	}
+	.total-div ul{
+		float:left;
+		width:100%;
+		padding-top:5px;
+		padding-left:0px;
+		list-style:none
+	}
+	.total-div ul li{
+		float:left;
+		width:25%;
+		text-align:center;
+		height:25px;
+		padding-top:3px;
+		font-size:16px;
+		font-weight:bold;
+		border-right:2px dotted #CCCCCC;
+		color:#333333;
+	}
+	.echart-title-div{
+		margin-left:15px;padding-left:10px;
+		height:30px;font-weight:bold;padding-top:5px;font-size:16px;
+	}
+	.panel-body p{
+		font-size:14px;
+		text-align:center;
+		color:#666666;
+		font-family:"微软雅黑";
+	}
+	#area-title{
+		font-size:14px;
+		text-align:center;
+		color:#333333;
+		font-family:"微软雅黑";
+	}
+	#pnumber{
+		color:#3366FF;
+		font-weight:bold;
+		font-size:18px;
+	}
+	.list-span{
+		width:60px;
+		height:30px;
+		font-weight:bold;
+		font-size:14px;
+		overflow:hidden;
+		color:#333333;
+	}
+	.list-span img{
+		max-width:30px;_width:expression(this.width>30?"30px":this.width);
+	}
+	.panel-body p span{
+		padding-left:6px;
+		font-size:14px;font-weight:600;color:#333333;
+	}

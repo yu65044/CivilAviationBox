@@ -1,0 +1,25 @@
+table tr td{
+		font-size:14px;
+ 		border:1px solid gray; 
+		text-align: center;
+	}
+	
+	input[type=text]{
+		border-radius: 0px;
+	}
+	
+	th{
+		text-align: center;
+		font-size: 14px;
+		font-weight: 550;
+	}
+	
+.tb{
+	width:100%;
+	font-size: 13px;
+}
+.tb tr{ height: 50px; }
+.tb tr td{margin: 0; padding: 8px; border: 1px solid #ddd; text-align: center;}/* border: 1px solid #0098CB; */
+.tb tr th{
+	text-align: center;
+}

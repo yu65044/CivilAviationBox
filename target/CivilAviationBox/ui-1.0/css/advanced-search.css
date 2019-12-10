@@ -1,0 +1,62 @@
+.bg_search{
+	background: url("../../images/2.png") no-repeat;
+	opacity:0.9;
+	filter:alpha(opacity=90);
+	width:100%;
+	height: 100%;
+	position: absolute;
+	background-size:100%;
+}
+.bg_search .searchForm{
+	text-align: center;
+	position: relative;
+	top: 30%;
+}
+.bg_search .searchForm h1{
+	display: inline-block;
+	padding: 10px;
+	font-weight: bold;
+	color:#FFFFFF;
+	text-align:center;
+	word-spacing:10px;
+	letter-spacing:8px;
+	font-size:24px;
+	font-family:"Microsoft YaHei";
+}
+
+.bg_search .searchForm .main-search{
+	width:45%; 
+	height:50px;
+	border:1px solid #0054c8;
+	background:#0054c8;
+	text-align: center;
+	margin: 20px auto 0px auto;
+}
+.bg_search .searchForm .main-search .search-txt-css{
+	height:48px;
+	
+	width:100%; 
+	border:1px solid #0054c8;
+	
+	font-size:18px;
+}
+
+.bg_search .searchForm .main-search .search-btn-css{
+	float:left;
+	width:3%;
+	padding: 10px 20px;
+}
+
+
+.bg_search .searchForm .main-search .search-a-css{
+	color: #FFFFFF;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-weight:600;
+	text-decoration: underline;
+}
+.bg_search .searchForm .main-search a:hover{
+	color: #000;
+}
+		

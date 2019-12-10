@@ -1,0 +1,156 @@
+/** layer弹窗CSS  BEGIN  ( layer.open 中配置 skin : "layer-win-class" ) */
+body .layer-win-class .layui-layer-title{background:#0098CB; color:#fff; border: none;}
+body .layer-win-class .layui-layer-btn{border-top:1px solid #E9E7E7; text-align: center;}
+body .layer-win-class .layui-layer-btn a{background:#333; height: 35px; line-height: 35px;}
+body .layer-win-class .layui-layer-btn a:hover{background: #ddd}
+body .layer-win-class .layui-layer-btn .layui-layer-btn0{background:#fff; border-color: #CCC; color: #000;}
+body .layer-win-class .layui-layer-btn .layui-layer-btn1{background:#fff; border-color: #CCC;}
+/** layer弹窗CSS  END */
+
+/** 文字溢出强制不换行且显示省略号 */
+.text-overflow{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+
+
+/** 下拉列表框CSS BEGIN ( select标签中引入class="wide" ) */
+.wide{
+	border:1px solid #E5E6E7;
+	width:100%;
+	font-size: 13px;
+	padding: 3px 5px;
+	height: 34px;
+	color:#AAA;
+}
+/** 下拉列表框CSS END */
+
+
+/** 查询弹窗CSS BEGIN */
+.modal-dialog {
+	width: 800px;
+}
+.modal-dialog .modal-content .layui-layer-title{
+	color:white;
+	background: #0098CB;
+	font-size: 16px;
+}
+.modal-dialog .modal-content .search_line{
+	border-color: #E7EAEC;
+	border-style: solid solid none;
+	border-width:4px 0 0;
+	clear: both;
+}
+.modal-dialog .modal-content .search_div{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.modal-dialog .modal-content .search_div table{
+	width:100%;
+}
+.modal-dialog .modal-content .search_div table tr{ height: 45px; }
+.modal-dialog .modal-content .search_div table tr td{margin: 0; padding: 5px; border: 1px solid #ddd; text-align: center;}/* border: 1px solid #0098CB; */
+.line-1{
+	height:1px;
+	border-top:1px solid #ddd;
+	text-align: center;
+}
+.line-1 a{
+	position: relative;
+	top:-8px;
+	background: #fff;
+	padding: 0 20px;
+}
+.line-title{
+	height:10px;
+	border-top:1px solid #0098CB;
+}
+.line-title span{
+	position: relative;
+	top:-8px;
+	left:15px;
+	background: #fff;
+	padding: 0 10px;
+	font-weight: bold;
+}
+.hide-demo{
+	display: none;
+}
+.p-l{
+	padding-left: 10px;
+}
+.modal-dialog .modal-content .search_div table .t-l{
+	width: 130px;
+}
+.form-control{
+	width: 100%;
+}
+.modal-dialog .modal-content .search_div table .w-130{
+	width: 130px;
+}
+.modal-dialog .modal-content .search_div table .w-185{
+	width: 185px;
+}
+.icon-view-text-overflow{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	width:100%;float:left; 
+	padding-top:5px;font-size:10px;
+}
+/** 查询弹窗CSS END */
+
+/** 从业人员添加/修改/查看表格CSS BEGIN */
+.tb{
+	width:100%;
+	font-size: 13px;
+}
+.tb tr{ height: 40px; }
+.tb tr td{margin: 0; padding: 5px; border: 1px solid #ddd; text-align: center;}/* border: 1px solid #0098CB; */
+.tb tr th{
+	text-align: center;
+}
+.tb td img{
+	width: 100%;
+	height: 100px;
+}
+.tb .img-box{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	*display:block;
+	*font-size:175px;
+	*font-family:Arial;
+	width:120px;
+	height:160px;
+}
+.tb .img-box img{
+	vertical-align: middle;
+	height: 140px;
+	width: 120px;
+}
+.tb .img-head img{
+	vertical-align: middle;
+	height: 220px;
+	width: 200px;
+}
+.form-control{
+	font-size: 13px;
+}
+.w-20{
+	width: 20px;
+}
+.w-200{
+	width:200px;
+}
+.print-text{
+	width: 100%;
+	display:block;
+	font-size: 10px;
+	text-align: center;
+}
+.w-80{
+	width: 80px;
+}
+/** 从业人员添加/修改/查看表格CSS END */
